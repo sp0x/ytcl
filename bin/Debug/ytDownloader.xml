@@ -6,96 +6,7 @@ ytDownloader
 </name>
 </assembly>
 <members>
-<member name="M:ytDownloader.DownloadOptionsBuilder.GetDownloader">
-	<summary>
- The most prefered way of getting a downloader.
- </summary>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:ytDownloader.DownloadOptionsBuilder.CompileCodecSelector">
-	<summary>
- Creates a predicate for the filtering of available video codecs.
- </summary>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="E:ytDownloader.AudioDownloader.AudioExtractionProgressChanged">
-	<summary>
- Occurs when the progress of the audio extraction has changed.
- </summary>
-</member><member name="E:ytDownloader.AudioDownloader.DownloadProgressChanged">
-	<summary>
- Occurs when the download progress of the video file has changed.
- </summary>
-</member><member name="M:ytDownloader.AudioDownloader.StartDownloading">
-	<summary>
- Downloads the video from YouTube and then extracts the audio track out if it.
- </summary>
-	<exception cref="T:System.IO.IOException">
- The temporary video file could not be created.
- - or -
- The audio file could not be created.
- </exception>
-	<exception cref="T:ytDownloader.Extraction.AudioExtractors.AudioExtractionException">An error occured during audio extraction.</exception>
-	<exception cref="T:System.Net.WebException">An error occured while downloading the video.</exception>
-</member><member name="M:ytDownloader.AudioDownloader.DownloadVideo(System.String)">
-	<summary>
- Downloads the FLV.
- </summary>
-	<param name="path">The path where it should be saved</param>
-	<remarks></remarks>
-</member><member name="M:ytDownloader.AudioDownloader.ExtractAudio(System.String)">
-	<summary>
- Extracts the audio stream from a given F
- </summary>
-	<param name="path">The path to the downloaded Flv file.</param>
-	<remarks></remarks>
-</member><member name="T:ytDownloader.AudioDownloader">
-	<summary>
- Provides a method to download a video and extract its audio track.
- </summary>
-</member><member name="E:ytDownloader.Downloader.DownloadFinished">
-	<summary>
- Occurs when the download finished.
- </summary>
-</member><member name="E:ytDownloader.Downloader.DownloadStarted">
-	<summary>
- Occurs when the download is starts.
- </summary>
-</member><member name="P:ytDownloader.Downloader.BytesToDownload">
-	<summary>
- Gets the number of bytes to download. <c>null</c>, if everything is downloaded.
- </summary>
-</member><member name="P:ytDownloader.Downloader.OutputPath">
-	<summary>
- Gets the path to save the video/audio.
- </summary>
-</member><member name="P:ytDownloader.Downloader.VideoCodec">
-	<summary>
- Gets the video to download/convert.
- </summary>
-</member><member name="M:ytDownloader.Downloader.StartDownloading">
-	<summary>
- Starts the work of the <see cref="T:ytDownloader.Downloader"/>.
- </summary>
-</member><member name="T:ytDownloader.Downloader">
-	<summary>
- Provides the base class for the <see cref="T:ytDownloader.AudioDownloader"/> and <see cref="T:ytDownloader.VideoDownloader"/> class.
- </summary>
-</member><member name="E:ytDownloader.VideoDownloader.DownloadProgressChanged">
-	<summary>
- Occurs when the downlaod progress of the video file has changed.
- </summary>
-</member><member name="M:ytDownloader.VideoDownloader.StartDownloading">
-	<summary>
- Starts the video download.
- </summary>
-	<exception cref="T:System.IO.IOException">The video file could not be saved.</exception>
-	<exception cref="T:System.Net.WebException">An error occured while downloading the video.</exception>
-</member><member name="T:ytDownloader.VideoDownloader">
-	<summary>
- Provides a method to download a video from YouTube.
- </summary>
-</member><member name="M:ytDownloader.Extraction.VideoParsers.StreamOutput.Flush">
+<member name="M:ytDownloader.Extraction.VideoParsers.StreamOutput.Flush">
 	<summary>
  Flushes the buffer
  </summary>
@@ -219,6 +130,53 @@ Gets the video extension."
 Gets the video type (container)."
 </summary>"
 
+</member><member name="M:ytDownloader.DownloadOptionsBuilder.GetDownloader">
+	<summary>
+ The most prefered way of getting a downloader.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ytDownloader.DownloadOptionsBuilder.CompileCodecSelector">
+	<summary>
+ Creates a predicate for the filtering of available video codecs.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="E:ytDownloader.AudioDownloader.AudioExtractionProgressChanged">
+	<summary>
+ Occurs when the progress of the audio extraction has changed.
+ </summary>
+</member><member name="E:ytDownloader.AudioDownloader.DownloadProgressChanged">
+	<summary>
+ Occurs when the download progress of the video file has changed.
+ </summary>
+</member><member name="M:ytDownloader.AudioDownloader.StartDownloading">
+	<summary>
+ Downloads the video from YouTube and then extracts the audio track out if it.
+ </summary>
+	<exception cref="T:System.IO.IOException">
+ The temporary video file could not be created.
+ - or -
+ The audio file could not be created.
+ </exception>
+	<exception cref="T:ytDownloader.Extraction.AudioExtractors.AudioExtractionException">An error occured during audio extraction.</exception>
+	<exception cref="T:System.Net.WebException">An error occured while downloading the video.</exception>
+</member><member name="M:ytDownloader.AudioDownloader.DownloadVideo(System.String)">
+	<summary>
+ Downloads the FLV.
+ </summary>
+	<param name="path">The path where it should be saved</param>
+	<remarks></remarks>
+</member><member name="M:ytDownloader.AudioDownloader.ExtractAudio(System.String)">
+	<summary>
+ Extracts the audio stream from a given F
+ </summary>
+	<param name="path">The path to the downloaded Flv file.</param>
+	<remarks></remarks>
+</member><member name="T:ytDownloader.AudioDownloader">
+	<summary>
+ Provides a method to download a video and extract its audio track.
+ </summary>
 </member><member name="T:ytDownloader.Extraction.VideoType">
 	<summary>
  The video type. Also known as video container.
@@ -267,6 +225,34 @@ and returns whether the normalization was successful or not.
 	<summary>
 Provides a method to get the download link of a YouTube video.
 </summary>
+</member><member name="E:ytDownloader.Downloader.DownloadFinished">
+	<summary>
+ Occurs when the download finished.
+ </summary>
+</member><member name="E:ytDownloader.Downloader.DownloadStarted">
+	<summary>
+ Occurs when the download is starts.
+ </summary>
+</member><member name="P:ytDownloader.Downloader.BytesToDownload">
+	<summary>
+ Gets the number of bytes to download. <c>null</c>, if everything is downloaded.
+ </summary>
+</member><member name="P:ytDownloader.Downloader.OutputPath">
+	<summary>
+ Gets the path to save the video/audio.
+ </summary>
+</member><member name="P:ytDownloader.Downloader.VideoCodec">
+	<summary>
+ Gets the video to download/convert.
+ </summary>
+</member><member name="M:ytDownloader.Downloader.StartDownloading">
+	<summary>
+ Starts the work of the <see cref="T:ytDownloader.Downloader"/>.
+ </summary>
+</member><member name="T:ytDownloader.Downloader">
+	<summary>
+ Provides the base class for the <see cref="T:ytDownloader.AudioDownloader"/> and <see cref="T:ytDownloader.VideoDownloader"/> class.
+ </summary>
 </member><member name="M:ytDownloader.Extraction.VideoParsers.ChannelExtractor.#ctor(System.String,System.String)">
 	<summary>
  Initializes a new instance of the <see cref="T:ytDownloader.Extraction.VideoParsers.ChannelExtractor"/> class.
@@ -308,6 +294,26 @@ Provides a method to get the download link of a YouTube video.
  </para>
  Please report when this exception happens at www.github.com/flagbug/YoutubeExtractor/issues
  </summary>
+</member><member name="E:ytDownloader.VideoDownloader.DownloadProgressChanged">
+	<summary>
+ Occurs when the downlaod progress of the video file has changed.
+ </summary>
+</member><member name="M:ytDownloader.VideoDownloader.StartDownloading">
+	<summary>
+ Starts the video download.
+ </summary>
+	<exception cref="T:System.IO.IOException">The video file could not be saved.</exception>
+	<exception cref="T:System.Net.WebException">An error occured while downloading the video.</exception>
+</member><member name="T:ytDownloader.VideoDownloader">
+	<summary>
+ Provides a method to download a video from YouTube.
+ </summary>
+</member><member name="M:ytDownloader.Extraction.AudioExtractors.AudioChannelExtractor.#ctor(System.String)">
+	<summary>
+ Creates a new Audio channel extractor, binded to the given output path
+ </summary>
+	<param name="outputPath"></param>
+	<remarks></remarks>
 </member><member name="P:ytDownloader.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -321,12 +327,6 @@ Provides a method to get the download link of a YouTube video.
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
-</member><member name="M:ytDownloader.Extraction.AudioExtractors.AudioChannelExtractor.#ctor(System.String)">
-	<summary>
- Creates a new Audio channel extractor, binded to the given output path
- </summary>
-	<param name="outputPath"></param>
-	<remarks></remarks>
 </member><member name="M:ytDownloader.Extraction.BitConverterEx.DoubleToInt64Bits(System.Double)">
 	<summary>
  Converts the specified double-precision floating point number to a 64-bit signed integer.

@@ -83,18 +83,17 @@ Public Module Main
         Dim ops As Options = New Options
         Try
             If CommandLine.Parser.Default.ParseArguments(args, ops) Then
-                If String.IsNullOrEmpty(ops.OutputPath) Or String.IsNullOrEmpty(ops.Link) Then Return
+                If String.IsNullOrEmpty(ops.Link) Then Return
                 Dim dldr As Downloader = HandleArguments(ops)
-
                 Try
                     Timer.Start()
-                    dldr.StartDownloading()
+                    dldr.Start()
                 Catch ex As Exception
                     Wl(ex.Message)
                 End Try
             Else
                 Wl("Usage:")
-                Wl("yoump3 http://youtubeUrl <-q [quality]> <-f [format:mp3,aac,flv,mp4,webm,3gp]>  outputFile <-*audio|video>")
+                Wl("yoump3 http://youtubeUrl <-q [quality]> <-f [format:mp3,aac,flv,mp4,webm,3gp]>  <outputFile> <-*audio|video>")
             End If
         Catch ex As Exception
             Wl(ex.Message)
