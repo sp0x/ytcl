@@ -1,0 +1,12 @@
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\ytcl.exe
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\CommandLine.dll
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\Newtonsoft.Json.dll
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\ytDownloader.dll
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\ytDownloader.pdb
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\ytDownloader.xml
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\CommandLine.xml
+g:\Dev\VB.NET\yoump3\ytcl\bin\Debug\Newtonsoft.Json.xml
+g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.vbprojResolveAssemblyReference.cache
+g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.Resources.resources
+g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.vbproj.GenerateResource.Cache
+g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.exe
