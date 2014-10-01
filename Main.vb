@@ -61,33 +61,41 @@ Public Module Main
         Console.ForegroundColor = ConsoleColor.White
     End Sub
     
-    Public Function HandleArguments(ops As Options)
-        Dim dldr As Downloader = Nothing
-        Dim dldOps As New DownloadOptionsBuilder(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality)
-        dldr = dldOps.GetDownloader
+    Public Function HandleArguments(ops As Options, Optional startEach As Boolean = False) As List(Of Downloader)
+        Dim executor As Action(Of Downloader) = Nothing
+        If startEach Then executor = AddressOf LaunchDownload
+        Return Downloader.Factory.CreateList(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality, _
+                                  executor)
+    End Function
+    Public Sub LaunchDownload(dldr As Downloader)
         If TypeOf dldr Is AudioDownloader Then
-            PrintStatement("Downloading audio: ", ops.Link)
+            PrintStatement("Downloading audio", dldr.InputUrl)
         Else
-            PrintStatement("Downloading video: ", ops.Link)
+            PrintStatement("Downloading video", dldr.InputUrl)
         End If
-
         AddHandler dldr.ExtractionProgressChanged, AddressOf updateHandler
         AddHandler dldr.DownloadProgressChanged, AddressOf updateHandler
         AddHandler dldr.DownloadFinished, AddressOf DownloadFinished
-        PrintStatement("To: ", dldOps.Output)
+        PrintStatement("To", dldr.OutputPath)
+        dldr.Start()
+    End Sub
 
-        Return dldr
-    End Function
 
     Public Sub Main(args As String())
         Dim ops As Options = New Options
+        Const startEach As Boolean = True
         Try
             If CommandLine.Parser.Default.ParseArguments(args, ops) Then
                 If String.IsNullOrEmpty(ops.Link) Then Return
-                Dim dldr As Downloader = HandleArguments(ops)
+                Timer.Start()
                 Try
-                    Timer.Start()
-                    dldr.Start()
+                    Dim downloaders As List(Of Downloader) = HandleArguments(ops, startEach)
+                    If Not startEach Then
+                        For Each dldr In downloaders
+                            LaunchDownload(dldr)
+                        Next
+                    End If
+                    PrintStatement("Downloaded a total of", String.Format("{0} videos!", downloaders.Count))
                 Catch ex As Exception
                     Wl(ex.Message)
                 End Try
@@ -102,7 +110,7 @@ Public Module Main
     End Sub
 
     Class Options
-        <OptionAttribute("f", "format", Required:=False, HelpText:="The format of the audio.")> _
+        <OptionAttribute("f", "format", DefaultValue:="mp3", Required:=False, HelpText:="The format of the audio.")> _
         Public Property Format As String
 
         <OptionAttribute("q", "quality", Required:=False, HelpText:="The quality of the video.")> _

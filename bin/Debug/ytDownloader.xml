@@ -130,13 +130,7 @@ Gets the video extension."
 Gets the video type (container)."
 </summary>"
 
-</member><member name="M:ytDownloader.DownloadOptionsBuilder.GetDownloader">
-	<summary>
- The most prefered way of getting a downloader.
- </summary>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:ytDownloader.DownloadOptionsBuilder.CompileCodecSelector">
+</member><member name="M:ytDownloader.DownloadOptionsBuilder.CompileCodecSelector(System.Boolean,System.String,System.Int32)">
 	<summary>
  Creates a predicate for the filtering of available video codecs.
  </summary>
@@ -184,13 +178,13 @@ Gets the video type (container)."
 </member><member name="M:ytDownloader.Extraction.YtUrlDecoder.DecryptDownloadUrl(ytDownloader.Extraction.VideoCodecInfo)">
 	<summary>
 Decrypts the signature in the <see cref="P:ytDownloader.Extraction.VideoCodecInfo.DownloadUrl"/> property and sets it
-to the decrypted URL. Use this method, if you have decryptSignature in the <see cref="M:ytDownloader.Extraction.YtUrlDecoder.GetDownloadUrls(System.String,System.Boolean)"/> method set to false.
+to the decrypted URL. Use this method, if you have decryptSignature in the <see cref="!:GetDownloadUrls"/> method set to false.
 </summary>
 	<param name="videoInfo">The video info which's downlaod URL should be decrypted.</param>
 	<exception cref="T:ytDownloader.Extraction.YoutubeParseException">
 There was an error while deciphering the signature.
 </exception>
-</member><member name="M:ytDownloader.Extraction.YtUrlDecoder.GetDownloadUrls(System.String,System.Boolean)">
+</member><member name="M:ytDownloader.Extraction.YtUrlDecoder.GetVideo(System.String,System.Boolean)">
 	<summary>
  Gets a list of <see cref="T:ytDownloader.Extraction.VideoCodecInfo"/>s for the specified URL.
  </summary>
@@ -232,6 +226,10 @@ Provides a method to get the download link of a YouTube video.
 </member><member name="E:ytDownloader.Downloader.DownloadStarted">
 	<summary>
  Occurs when the download is starts.
+ </summary>
+</member><member name="P:ytDownloader.Downloader.InputUrl">
+	<summary>
+ The url for the video/audio you want to download
  </summary>
 </member><member name="P:ytDownloader.Downloader.BytesToDownload">
 	<summary>
