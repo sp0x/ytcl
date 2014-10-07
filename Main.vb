@@ -61,12 +61,13 @@ Public Module Main
         Console.ForegroundColor = ConsoleColor.White
     End Sub
     
-    Public Function HandleArguments(ops As Options, Optional startEach As Boolean = False) As List(Of Downloader)
+    Public Sub HandleArguments(ops As Options, Optional startEach As Boolean = False)
         Dim executor As Action(Of Downloader) = Nothing
         If startEach Then executor = AddressOf LaunchDownload
-        Return Downloader.Factory.CreateList(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality, _
+        Downloader.Factory.ExecuteList(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality, _
                                   executor)
-    End Function
+    End Sub
+
     Public Sub LaunchDownload(dldr As Downloader)
         If TypeOf dldr Is AudioDownloader Then
             PrintStatement("Downloading audio", dldr.InputUrl)
@@ -77,25 +78,22 @@ Public Module Main
         AddHandler dldr.DownloadProgressChanged, AddressOf updateHandler
         AddHandler dldr.DownloadFinished, AddressOf DownloadFinished
         PrintStatement("To", dldr.OutputPath)
+
         dldr.Start()
+        DownloadCounter += 1
     End Sub
 
-
+    Public DownloadCounter As UInt64 = 0
     Public Sub Main(args As String())
         Dim ops As Options = New Options
-        Const startEach As Boolean = True
+       Const startEach As Boolean = True
         Try
             If CommandLine.Parser.Default.ParseArguments(args, ops) Then
                 If String.IsNullOrEmpty(ops.Link) Then Return
                 Timer.Start()
                 Try
-                    Dim downloaders As List(Of Downloader) = HandleArguments(ops, startEach)
-                    If Not startEach Then
-                        For Each dldr In downloaders
-                            LaunchDownload(dldr)
-                        Next
-                    End If
-                    PrintStatement("Downloaded a total of", String.Format("{0} videos!", downloaders.Count))
+                    HandleArguments(ops, startEach)
+                    PrintStatement("Downloaded a total of", String.Format("{0} videos!", DownloadCounter))
                 Catch ex As Exception
                     Wl(ex.Message)
                 End Try

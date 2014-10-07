@@ -58,6 +58,13 @@ ytDownloader
 	<param name="url">The url to decode</param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:ytDownloader.Extraction.YtPlaylistEnumerator.MoveNext">
+	<summary>
+ Iterates through each video. Caches with a range of 25(defined by youtube) so it doesn't do double requests.
+ Each video is just a new video with it's ID.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="T:ytDownloader.Extraction.AudioExtractors.AudioExtractionException">
 	<summary>
  The exception that is thrown when an error occurs durin audio extraction.
