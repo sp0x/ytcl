@@ -238,10 +238,6 @@ Provides a method to get the download link of a YouTube video.
 	<summary>
  The url for the video/audio you want to download
  </summary>
-</member><member name="P:ytDownloader.Downloader.BytesToDownload">
-	<summary>
- Gets the number of bytes to download. <c>null</c>, if everything is downloaded.
- </summary>
 </member><member name="P:ytDownloader.Downloader.OutputPath">
 	<summary>
  Gets the path to save the video/audio.
@@ -250,6 +246,12 @@ Provides a method to get the download link of a YouTube video.
 	<summary>
  Gets the video to download/convert.
  </summary>
+</member><member name="M:ytDownloader.Downloader.Initialize(ytDownloader.Downloader@)">
+	<summary>
+ This should be called, only after the first element from the video list ha been fetched.
+ </summary>
+	<param name="dldr">The downloader to initialize.</param>
+	<remarks></remarks>
 </member><member name="M:ytDownloader.Downloader.StartDownloading">
 	<summary>
  Starts the work of the <see cref="T:ytDownloader.Downloader"/>.
@@ -345,6 +347,12 @@ Provides a method to get the download link of a YouTube video.
  </summary>
 	<param name="bool"></param>
 	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ytDownloader.Downloader.Factory`1.SetExtendor(ytDownloader.Downloader@)">
+	<summary>
+ Modifies the type of the downloader, and keeps it's options
+ </summary>
+	<param name="dldr"></param>
 	<remarks></remarks>
 </member><member name="T:ytDownloader.Extraction.VideoNotAvailableException">
 	<summary>

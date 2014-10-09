@@ -69,6 +69,7 @@ Public Module Main
     End Sub
 
     Public Sub LaunchDownload(dldr As Downloader)
+        dldr = Downloader.Initialize(dldr)
         If TypeOf dldr Is AudioDownloader Then
             PrintStatement("Downloading audio", dldr.InputUrl)
         Else
@@ -78,7 +79,6 @@ Public Module Main
         AddHandler dldr.DownloadProgressChanged, AddressOf updateHandler
         AddHandler dldr.DownloadFinished, AddressOf DownloadFinished
         PrintStatement("To", dldr.OutputPath)
-
         dldr.Start()
         DownloadCounter += 1
     End Sub
@@ -86,6 +86,7 @@ Public Module Main
     Public DownloadCounter As UInt64 = 0
     Public Sub Main(args As String())
         Dim ops As Options = New Options
+
        Const startEach As Boolean = True
         Try
             If CommandLine.Parser.Default.ParseArguments(args, ops) Then

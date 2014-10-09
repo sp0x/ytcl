@@ -10,7 +10,6 @@ g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.vbprojResolveAssemblyReference.cache
 g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.Resources.resources
 g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.vbproj.GenerateResource.Cache
 g:\Dev\VB.NET\yoump3\ytcl\obj\Debug\ytcl.exe
-G:\Dev\VB.NET\ytcl\bin\Debug\CommandLine.xml
 g:\Dev\VB.NET\ytcl\bin\Debug\ytcl.exe
 g:\Dev\VB.NET\ytcl\bin\Debug\ytcl.pdb
 g:\Dev\VB.NET\ytcl\bin\Debug\ytcl.xml
