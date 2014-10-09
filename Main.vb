@@ -83,11 +83,15 @@ Public Module Main
         DownloadCounter += 1
     End Sub
 
+
+
+
+
     Public DownloadCounter As UInt64 = 0
     Public Sub Main(args As String())
         Dim ops As Options = New Options
 
-       Const startEach As Boolean = True
+        Const startEach As Boolean = True
         Try
             If CommandLine.Parser.Default.ParseArguments(args, ops) Then
                 If String.IsNullOrEmpty(ops.Link) Then Return
@@ -108,26 +112,7 @@ Public Module Main
         Wl("Press any key to exit:") : Console.ReadLine()
     End Sub
 
-    Class Options
-        <OptionAttribute("f", "format", DefaultValue:="mp3", Required:=False, HelpText:="The format of the audio.")> _
-        Public Property Format As String
-
-        <OptionAttribute("q", "quality", Required:=False, HelpText:="The quality of the video.")> _
-        Public Property Quality As String
-
-
-        <OptionAttribute("v", "video", DefaultValue:=False, Required:=False)>
-        Public Property OnlyVideo As Boolean
-
-        <ValueOption(0)> _
-        Public Property Link As String
-
-        <ValueOption(1)> _
-        Public Property OutputPath As String
-
-    End Class
-
-
+  
 
 
 End Module
