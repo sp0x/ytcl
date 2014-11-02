@@ -7,6 +7,8 @@ Public Class Options
     <OptionAttribute("q", "quality", Required:=False, HelpText:="The quality of the video.")> _
     Public Property Quality As String
 
+    <OptionAttribute("i", "info", DefaultValue:=False, Required:=False)>
+    Public Property IsInformationRequest As Boolean
 
     <OptionAttribute("v", "video", DefaultValue:=False, Required:=False)>
     Public Property OnlyVideo As Boolean

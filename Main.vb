@@ -64,8 +64,19 @@ Public Module Main
     Public Sub HandleArguments(ops As Options, Optional startEach As Boolean = False)
         Dim executor As Action(Of Downloader) = Nothing
         If startEach Then executor = AddressOf LaunchDownload
-        Downloader.Factory.ExecuteList(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality, _
-                                  executor)
+        Downloader.Factory.TryParseQuality(ops.Quality)
+        If Not ops.IsInformationRequest Then
+            Downloader.Factory.ExecuteList(ops.Link, ops.OutputPath, ops.OnlyVideo, ops.Format, ops.Quality, _
+                                      executor)
+        Else
+            'TODO: Implement info fetching.
+            Dim dOps As DownloadOptions = DownloadOptionsBuilder.Build(ops.OutputPath, False, "", 0)
+            Dim codecs As IEnumerable(Of VideoCodecInfo) = dOps.GetCodecs(ops.Link)
+            codecs = codecs.OrderBy(Function(x) x.FormatCode).ThenBy(Function(x) x.Resolution)
+            For Each codec As VideoCodecInfo In codecs
+                Wl(codec.ToString)
+            Next
+        End If
     End Sub
 
     Public Sub LaunchDownload(dldr As Downloader)
@@ -104,7 +115,7 @@ Public Module Main
                 End Try
             Else
                 Wl("Usage:")
-                Wl("yoump3 http://youtubeUrl <-q [quality]> <-f [format:mp3,aac,flv,mp4,webm,3gp]>  <outputFile> <-*audio|video>")
+                Wl("yoump3 http://youtubeUrl <-q [quality]> <-f [format:mp3,aac,flv,mp4,webm,3gp]>  <outputFile> <-*audio|video> <-i|info>")
             End If
         Catch ex As Exception
             Wl(ex.Message)

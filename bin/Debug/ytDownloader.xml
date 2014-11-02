@@ -348,6 +348,32 @@ Provides a method to get the download link of a YouTube video.
 	<param name="bool"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:ytDownloader.Downloader.Factory.Create(ytDownloader.Extraction.VideoCodecInfo,ytDownloader.DownloadOptions,System.Boolean)">
+	<summary>
+ Creates a new downloader.
+ </summary>
+	<param name="codec"></param>
+	<param name="ops"></param>
+	<param name="isPlaylist"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ytDownloader.Downloader.Factory.ParseLink(System.String,ytDownloader.DownloadOptions,System.Action{ytDownloader.Downloader},System.Boolean)">
+	<summary>
+ Parses a given link with it's options, and returns a list of downloaders.
+ </summary>
+	<param name="link">The link to the video or playlist</param>
+	<param name="dldOps">Download options for codec selection</param>
+	<param name="actionOnParse">Action to perform once fetched</param>
+	<param name="lazy">Fetch codecs for every downloader, or fetch them later?</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ytDownloader.Downloader.Factory.ParseQuality(System.String)">
+	<summary>
+ Parses a quality string into a valid integer, specifying the quality to select.
+ </summary>
+	<param name="quality">Quality string. You can also use highest,lowest.</param>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:ytDownloader.Downloader.Factory`1.SetExtendor(ytDownloader.Downloader@)">
 	<summary>
  Modifies the type of the downloader, and keeps it's options
