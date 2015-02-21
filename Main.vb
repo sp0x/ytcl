@@ -80,6 +80,7 @@ Public Module Main
     End Sub
 
     Public Sub LaunchDownload(dldr As Downloader)
+    Try
         dldr = Downloader.Initialize(dldr)
         If TypeOf dldr Is AudioDownloader Then
             PrintStatement("Downloading audio", dldr.InputUrl)
@@ -92,6 +93,9 @@ Public Module Main
         PrintStatement("To", dldr.OutputPath)
         dldr.Start()
         DownloadCounter += 1
+        catch ex as Exception
+            Wl(String.format("Exception: {0}", ex.message))
+        end try 
     End Sub
 
 
