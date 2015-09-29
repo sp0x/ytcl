@@ -1,0 +1,5 @@
+#watch-description-text
+	p#eow-description
+//text before
+<a onclick="yt.www.watch.player.seekTo(3*60+54);return false;" href="#">
+<br></br>

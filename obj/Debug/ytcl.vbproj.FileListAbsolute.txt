@@ -24,3 +24,11 @@ G:\Dev\VB.NET\ytcl\obj\Debug\ytcl.vbproj.GenerateResource.Cache
 G:\Dev\VB.NET\ytcl\obj\Debug\ytcl.exe
 G:\Dev\VB.NET\ytcl\obj\Debug\ytcl.xml
 G:\Dev\VB.NET\ytcl\obj\Debug\ytcl.pdb
+G:\Dev\VB.NET\ytcl\bin\Debug\HtmlAgilityPack.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\Fizzler.Systems.HtmlAgilityPack.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\Fizzler.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\libmp3lame.32.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\libmp3lame.64.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\NAudio.dll
+G:\Dev\VB.NET\ytcl\bin\Debug\NAudio.pdb
+G:\Dev\VB.NET\ytcl\bin\Debug\NAudio.xml

@@ -46,6 +46,22 @@ Public Module Main
                 Console.ForegroundColor = ConsoleColor.Green
                 Wl(String.Format("Finished [in {0}] downloading and saved to {1}", Timer.Elapsed, e.Path))
                 Console.ForegroundColor = ConsoleColor.White
+                Dim downloader = DirectCast(sender, Downloader)
+                If downloader.CurrentVideo IsNot Nothing And downloader.CurrentVideo.InnerItems IsNot Nothing Then
+                    PrintStatement("Object has a list of inner items: ", "")
+                    Dim ix As UInt32 = 0
+                    For Each item As KeyValuePair(Of String, String) In downloader.CurrentVideo.InnerItems
+                        Wl(String.Format("{0} - {1}", item.Value, item.Key))
+                        ix += 1
+                    Next
+                    Wl("Do you want to cut them?[y/N]")
+                    Dim cutIt As String = Console.ReadLine().ToLower()
+                    If (cutIt.StartsWith("y") Or cutIt.StartsWith("yes")) Then
+                        Dim cutter As New AudioExtractors.MP3Cutter(e.Path, System.IO.Path.GetDirectoryName(e.Path))
+                        cutter.applyTimeDictionary(downloader.CurrentVideo.InnerItems)
+                    End If
+                End If
+
             Case IoMode.Streaming
 
         End Select
@@ -115,7 +131,7 @@ Public Module Main
                     HandleArguments(ops, startEach)
                     PrintStatement("Downloaded a total of", String.Format("{0} videos!", DownloadCounter))
                 Catch ex As Exception
-                    Wl(ex.Message)
+                    PrintStatement("Error", ex.Message)
                 End Try
             Else
                 Wl("Usage:")
